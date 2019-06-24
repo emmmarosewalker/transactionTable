@@ -24,4 +24,8 @@ Please spend no more than 2 hours on this challenge. We are interested in seeing
 
 ## Resources
 - You can find the design for the DiviPay transaction table here [https://github.com/divipayhq/divipay-frontend-challenge/blob/master/transaction-table-design.pdf](here).
-- All sample has been provided for you.
+- All sample data has been provided for you.
+- In the status field, the following values map to a respective icon:
+    - incomplete: exclaimation mark with orange background
+    - complete: tick with blue background
+    - exported: right arrow with green background
