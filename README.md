@@ -18,6 +18,10 @@ Finance managers use DiviPay to stay on top of their team's expenses. Your chall
     - Date
     - Merchant
     - Amount
+- All fields should be read-only, except for Category and Billable.
+- The Category field should contain a dropdown input where a different Category can be selected.
+- The Billable field should be a checkbox that can be enabled or disabled.
+- The Receipt field should display an icon coloured blue if the value is true, or a yellow icon if false.
 
 ## Required effort
 Please spend no more than 2 hours on this challenge. We are interested in seeing your problem solving ability, the way you structure your code and your design skills vs. building a fully functional or perfect solution.
