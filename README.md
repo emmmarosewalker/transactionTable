@@ -12,7 +12,13 @@ Finance managers use DiviPay to stay on top of their team's expenses. Your chall
 - Your transaction table should look like the design provided in `transaction-table-design.pdf`.
 - You do not need to match the exact fonts used. Please pick a font that suits the design.
 - You may only show 20 transactions at a time. Please implement pagination so that the user can view multiple pages of transactions and navigate between them.
-- Please implement a search feature that can take any input in the search bar and display any matching transactions in the table. Fields that should be searched are merchant, team member, category, budget, gst and amount.
+- Please implement a search feature that can take any input in the search bar and display any matching transactions in the table. Fields that should be searched are:
+    - Merchant
+    - Team member
+    - Category
+    - Budget
+    - GST
+    - Amount
 - Please implement a filter feature that can filter the following fields. You will need to design what the filter feature looks like.
     - Status
     - Date
