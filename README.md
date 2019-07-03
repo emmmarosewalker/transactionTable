@@ -27,7 +27,7 @@ Finance managers use DiviPay to stay on top of their team's expenses. Your chall
 Please spend no more than 2 hours on this challenge. We are interested in seeing your problem solving ability, the way you structure your code and your design skills vs. building a fully functional or perfect solution.
 
 ## Resources
-- You can find the design for the DiviPay transaction table here [https://github.com/divipayhq/divipay-frontend-challenge/blob/master/transaction-table-design.pdf](here).
+- You can find the design for the DiviPay transaction table here [https://github.com/divipayhq/divipay-frontend-challenge/blob/master/transaction-table-design.pdf](https://github.com/divipayhq/divipay-frontend-challenge/blob/master/transaction-table-design.pdf).
 - All sample data has been provided for you.
 - In the status field, the following values map to a respective icon:
     - incomplete: exclaimation mark with orange background
