@@ -31,3 +31,18 @@
     color: #222;
     outline: none;
 }
+
+button {
+    margin-left: 2rem;
+    background: #fff;
+    border: 1px solid var(--warning);
+    border-radius: 0.5rem;
+    padding: 0.5rem 1rem;
+    transition: all 0.3s linear;
+}
+
+button:hover {
+    box-shadow: 0 .5rem 1rem rgba(12, 56, 94, .15);
+    cursor: pointer;
+    transform: translateY(-2px);
+}
