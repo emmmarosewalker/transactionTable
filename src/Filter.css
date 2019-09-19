@@ -1,0 +1,26 @@
+.Filter {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin: 1rem 1rem 2rem 0;
+}
+
+.Filter > div {
+    margin-right: 2rem;
+    flex-basis: 40%;
+    margin-bottom: 0;
+}
+
+.container {
+    padding: 1rem 1rem 0 2rem;
+    margin-bottom: 2rem;
+    border: 1px solid var(--light-gray);
+    border-radius: 1rem;
+    box-shadow: 0 .5rem 1rem rgba(12, 56, 94, .15);
+    background-color: #fff;
+}
+
+.container h2 {
+    margin: 0;
+}
+

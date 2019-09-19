@@ -2,6 +2,7 @@ import React from 'react';
 import './Table.css';
 import TableRow from './TableRow';
 import SearchBox from './SearchBox';
+import Filter from './Filter';
 
 class Table extends React.Component {
 
@@ -34,6 +35,24 @@ class Table extends React.Component {
         this.setState( { searchTerm: term } );
     }
 
+    handleFilter( target ) {
+        let updated;
+        let filterBy = target.name.includes('date') ? 'date' : 'amount';
+        if (target.name.includes('min')) {
+            updated = this.parsedTransactions.filter( t => t[filterBy] >= target.value) 
+        }
+        else if (target.name.includes('max')) {
+            updated = this.parsedTransactions.filter( t => t[filterBy] <= target.value);
+        } else {
+            updated = target.checked 
+                ? this.parsedTransactions.filter( t => t[target.name] === target.value) 
+                : updated = this.parsedTransactions;
+        }
+        this.setState({transactions: updated});
+    }
+
+    
+
     render() {
         const transactionRows = this.state.transactions.filter(transaction => this.search(transaction)).map((transaction) => {
             const categories = this.props.categories.map(cat => cat.name);
@@ -49,6 +68,10 @@ class Table extends React.Component {
         return (
             <div>
                 <SearchBox handleSearch={this.handleSearch} />
+                <Filter 
+                    handleFilter={this.handleFilter} 
+                    merchants={this.props.merchants}
+                />
                 <div className="Table">
                     <table>
                         <thead>
