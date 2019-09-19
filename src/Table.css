@@ -1,4 +1,27 @@
 .Table {
-    border: 1px solid black;
-    text-align: left;    
+    border-radius: 2rem;
+    text-align: left;
+    background: #fff;
+    box-shadow: 0 .5rem 1rem rgba(12, 56, 94, .15);
+    padding: 1rem 0;
+}
+
+.Table td,
+.Table th {
+    border-collapse: collapse;
+    border-bottom: 1px solid var(--light-gray);
+    padding: 1rem;
+}
+
+.Table td {
+    border-left: 1px solid var(--light-gray);
+}
+
+.Table td:nth-of-type(1) {
+    border-left: none;
+}
+
+.Table th {
+    text-transform: uppercase;
+    color: var(--mid-gray);
 }
