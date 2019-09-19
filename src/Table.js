@@ -1,6 +1,7 @@
 import React from 'react';
 import './Table.css';
 import TableRow from './TableRow';
+import SearchBox from './SearchBox';
 
 class Table extends React.Component {
 
@@ -11,6 +12,7 @@ class Table extends React.Component {
             page: 0,
             transactions: ""
         }
+        this.handleSearch = this.handleSearch.bind(this);
     }
 
     parsedTransactions = this.props.transactions.map(transaction => {
@@ -25,7 +27,11 @@ class Table extends React.Component {
     }
 
     search( transaction ) {
-        return Object.values(transaction).toString().toLowerCase().includes("facebook");
+        return Object.values(transaction).toString().toLowerCase().includes(this.state.searchTerm);
+    }
+
+    handleSearch( term ) {
+        this.setState( { searchTerm: term } );
     }
 
     render() {
@@ -35,32 +41,35 @@ class Table extends React.Component {
                 <TableRow 
                     key={transaction.id}
                     transaction={transaction} 
-                    categories={categories} 
+                    categories={categories}
                 />
             );
         });
 
         return (
-            <div className="Table">
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Status</th>
-                            <th>Date</th>
-                            <th>Merchant</th>
-                            <th>Team Member</th>
-                            <th>Category</th>
-                            <th>Budget</th>
-                            <th>Receipt</th>
-                            <th>Billable</th>
-                            <th>GST</th>
-                            <th>Amount</th>
-                        </tr>
-                    </thead>                
-                    <tbody>
-                        {transactionRows}
-                    </tbody>
-                </table>
+            <div>
+                <SearchBox handleSearch={this.handleSearch} />
+                <div className="Table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Status</th>
+                                <th>Date</th>
+                                <th>Merchant</th>
+                                <th>Team Member</th>
+                                <th>Category</th>
+                                <th>Budget</th>
+                                <th>Receipt</th>
+                                <th>Billable</th>
+                                <th>GST</th>
+                                <th>Amount</th>
+                            </tr>
+                        </thead>                
+                        <tbody>
+                            {transactionRows}
+                        </tbody>
+                    </table>
+                </div>
             </div>
         );
     }
