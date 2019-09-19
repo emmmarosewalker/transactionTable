@@ -18,7 +18,6 @@ class Table extends React.Component {
         this.handleCheckBox = this.handleCheckBox.bind(this);
         this.handleFilter = this.handleFilter.bind(this);
         this.handleCategoryChange = this.handleCategoryChange.bind(this);
-
     }
 
     parsedTransactions = this.props.transactions.map(transaction => {
@@ -37,7 +36,7 @@ class Table extends React.Component {
     }
 
     handleSearch( term ) {
-        this.setState( { searchTerm: term } );
+        this.setState( { searchTerm: term, page: 0 } );
     }
 
     handleFilter( target ) {
@@ -115,11 +114,11 @@ class Table extends React.Component {
                             </tr>
                         </thead>                
                         <tbody>
-                            {transactionRows.slice(this.state.page, this.state.page + 20)}
+                            {transactionRows.slice(this.state.page * 20, (this.state.page * 20) + 20)}
                         </tbody>
                     </table>
                     <button disabled={this.state.page <= 0 ? true : false} href="#" onClick={this.handlePageChange} value="prev">Prev Page</button>
-                    <button disabled={this.state.page > transactionRows.length/20 ? true : false} href="#" onClick={this.handlePageChange} value="next">Next Page</button>
+                    <button disabled={this.state.page > (this.state.transactions.length/20) -2 ? true : false} href="#" onClick={this.handlePageChange} value="next">Next Page</button>
                 </div>
             </div>
         );
