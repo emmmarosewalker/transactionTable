@@ -1,0 +1,28 @@
+.icon {
+    color: white;
+    width: 1.5rem;
+    height: 1.5rem;
+    border-radius: 50%;
+    text-align: center;
+    display: inline-block;
+    margin: auto 0.5rem;
+    overflow: hidden;
+    line-height: 1.5rem;
+}
+.icon span {
+    text-align: center;
+    font-weight: 800;
+    font-size: 0.8rem;
+}
+.incomplete {
+    background: var(--warning);
+}
+.complete {
+    background: var(--success);
+}
+.exported {
+    background: var(--info);
+}
+.neutral {
+    background: var(--dark-blue);
+}

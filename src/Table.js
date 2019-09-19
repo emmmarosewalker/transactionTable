@@ -1,24 +1,42 @@
 import React from 'react';
 import './Table.css';
+import TableRow from './TableRow';
 
 class Table extends React.Component {
+
+    constructor(props) {
+        super(props);
+        this.state = {
+            searchTerm: "",
+            page: 0,
+            transactions: ""
+        }
+    }
+
+    parsedTransactions = this.props.transactions.map(transaction => {
+        let clone = {...transaction};
+        clone.category = this.props.categories.find((category) => category.id === transaction.category).name;
+        clone.merchant = this.props.merchants.find((merchant) => merchant.id === transaction.merchant).name;
+        return clone;
+    });
+
+    componentWillMount() {
+        this.setState( { transactions: this.parsedTransactions } );
+    }
+
+    search( transaction ) {
+        return Object.values(transaction).toString().toLowerCase().includes("facebook");
+    }
+
     render() {
-        const transactionRows = this.props.transactions.map((transaction) => {
-            const category = this.props.categories.find((category) => category.id === transaction.category);
-            const merchant = this.props.merchants.find((merchant) => merchant.id === transaction.merchant);
+        const transactionRows = this.state.transactions.filter(transaction => this.search(transaction)).map((transaction) => {
+            const categories = this.props.categories.map(cat => cat.name);
             return (
-                <tr key={transaction.id}>
-                    <td>{transaction.status}</td>
-                    <td>{transaction.date}</td>
-                    <td>{merchant.name}</td>
-                    <td>{transaction.team_member}</td>
-                    <td>{category.name}</td>
-                    <td>{transaction.budget}</td>
-                    <td>{transaction.receipt ? "T" : "F"}</td>
-                    <td>{transaction.billable ? "T" : "F"}</td>
-                    <td>{transaction.gst}</td>
-                    <td>{transaction.amount}</td>
-                </tr>
+                <TableRow 
+                    key={transaction.id}
+                    transaction={transaction} 
+                    categories={categories} 
+                />
             );
         });
 
