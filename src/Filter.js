@@ -16,7 +16,6 @@ const Filter = ( props ) => {
                     <input type="radio" name="status" value="complete" onChange={onFilterChange} key={1}/>Complete
                     <input type="radio" name="status" value="incomplete" onChange={onFilterChange} key={2} />Incomplete
                     <input type="radio" name="status" value="exported" onChange={onFilterChange} key={3}/>Exported
-                    <input type="radio" name="status" value="all" onChange={onFilterChange} key={4}/>All
                 </div>
                 <div>
                     <h3>Date</h3>
@@ -30,7 +29,6 @@ const Filter = ( props ) => {
                     <input type="radio" name="merchant" value="Woolworths" onChange={onFilterChange}/>Woolworths
                     <input type="radio" name="merchant" value="Hubspot" onChange={onFilterChange}/>Hubspot
                     <input type="radio" name="merchant" value="Google" onChange={onFilterChange}/>Google
-                    <input type="radio" name="merchant" value="all" onChange={onFilterChange} />All
                 </div>
                 <div>
                     <h3>Amount</h3>

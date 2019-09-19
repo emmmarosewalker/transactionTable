@@ -14,6 +14,11 @@ class Table extends React.Component {
             transactions: ""
         }
         this.handleSearch = this.handleSearch.bind(this);
+        this.handlePageChange = this.handlePageChange.bind(this);
+        this.handleCheckBox = this.handleCheckBox.bind(this);
+        this.handleFilter = this.handleFilter.bind(this);
+        this.handleCategoryChange = this.handleCategoryChange.bind(this);
+
     }
 
     parsedTransactions = this.props.transactions.map(transaction => {
@@ -51,7 +56,25 @@ class Table extends React.Component {
         this.setState({transactions: updated});
     }
 
-    
+    handlePageChange( e ) {
+        e.preventDefault();
+        // increment or decrement the state of the current page number depending on the pagination button pressed
+        e.target.value === "next" ? this.setState( (prevState) => ({ page: prevState.page + 1 })) : this.setState( (prevState) => ({ page: prevState.page - 1 }));
+    }
+
+    handleCheckBox( val, id, checkboxName ) {
+        let idx = this.state.transactions.findIndex( t => t.id === id );
+        let updated = [...this.state.transactions];
+        updated[idx][checkboxName] = !updated[idx][checkboxName];
+        this.setState({transactions: updated});
+    }
+
+    handleCategoryChange( id, newCat ) {
+        let idx = this.state.transactions.findIndex( t => t.id === id );
+        let updated = [...this.state.transactions];
+        updated[idx].category = newCat;
+        this.setState({transactions: updated});
+    }
 
     render() {
         const transactionRows = this.state.transactions.filter(transaction => this.search(transaction)).map((transaction) => {
@@ -60,7 +83,9 @@ class Table extends React.Component {
                 <TableRow 
                     key={transaction.id}
                     transaction={transaction} 
-                    categories={categories}
+                    categories={categories} 
+                    handleCheckBox={this.handleCheckBox} 
+                    handleCategoryChange={this.handleCategoryChange}
                 />
             );
         });
@@ -76,6 +101,7 @@ class Table extends React.Component {
                     <table>
                         <thead>
                             <tr>
+                                <th><input readOnly type="checkbox" name="checkAll" checked={false}/></th>
                                 <th>Status</th>
                                 <th>Date</th>
                                 <th>Merchant</th>
@@ -89,9 +115,11 @@ class Table extends React.Component {
                             </tr>
                         </thead>                
                         <tbody>
-                            {transactionRows}
+                            {transactionRows.slice(this.state.page, this.state.page + 20)}
                         </tbody>
                     </table>
+                    <button disabled={this.state.page <= 0 ? true : false} href="#" onClick={this.handlePageChange} value="prev">Prev Page</button>
+                    <button disabled={this.state.page > transactionRows.length/20 ? true : false} href="#" onClick={this.handlePageChange} value="next">Next Page</button>
                 </div>
             </div>
         );
